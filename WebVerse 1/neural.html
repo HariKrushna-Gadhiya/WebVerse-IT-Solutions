@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebVerse | Neural Engine</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#0e0e0e",
+                        surface: "#0e0e0e",
+                        "surface-container-highest": "#262626",
+                        "surface-container-high": "#201f1f",
+                        "surface-container-low": "#131313",
+                        "on-surface": "#ffffff",
+                        "on-surface-variant": "#adaaaa",
+                        primary: "#a3a6ff",
+                        "primary-dim": "#6063ee",
+                        "on-primary": "#0f00a4",
+                        secondary: "#53ddfc",
+                        tertiary: "#c180ff",
+                        "outline-variant": "#494847",
+                    },
+                    fontFamily: {
+                        headline: ["Space Grotesk"],
+                        body: ["Manrope"],
+                        label: ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #0e0e0e;
+            color: #ffffff;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* 3D Canvas Background */
+        #webgl-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(19, 19, 19, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(73, 72, 71, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .liquid-nav {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.4) 0%, rgba(10, 10, 10, 0.2) 100%);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .liquid-btn {
+            background: linear-gradient(to right, rgba(163,166,255,0.1), rgba(83,221,252,0.1));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.3), 0 8px 20px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .liquid-btn:hover {
+            background: linear-gradient(to right, rgba(163,166,255,0.3), rgba(83,221,252,0.3));
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.5), 0 0 25px rgba(163,166,255,0.6);
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary antialiased">
+
+    <!-- 3D Background Container -->
+    <div id="webgl-container"></div>
+
+    <!-- HUD Style Navigation -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 md:px-8 mt-4 mx-auto w-[95%] max-w-7xl liquid-nav rounded-full transition-all duration-500">
+        <div class="flex items-center gap-3">
+            <img src="./logo.png" alt="Logo"
+                class="w-8 h-8 rounded-full border border-primary/40 shadow-[0_0_15px_rgba(163,166,255,0.4)]">
+            <div
+                class="text-xl md:text-2xl font-black tracking-tighter text-primary drop-shadow-[0_0_8px_rgba(163,166,255,0.4)] font-headline uppercase">
+                WebVerse
+            </div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8">
+            <a href="index.html"
+                class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-white transition-all duration-300">Hub</a>
+            <a href="network.html"
+                class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-white transition-all duration-300">Network</a>
+            <a href="neural.html"
+                class="font-headline tracking-widest uppercase text-xs text-primary border-b border-primary pb-1 hover:text-white transition-all duration-300">Neural</a>
+            <a href="archive.html"
+                class="font-headline tracking-widest uppercase text-xs text-on-surface-variant hover:text-white transition-all duration-300">Archive</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <span
+                class="material-symbols-outlined text-secondary hover:scale-110 transition-transform cursor-pointer hidden sm:block">search</span>
+            <button
+                class="liquid-btn px-5 py-2 md:px-6 md:py-2.5 rounded-full font-label text-xs font-bold uppercase tracking-widest text-primary">
+                Initialize
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Flow -->
+    <main class="relative z-10 pt-32 px-6 pb-24 md:px-12 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
+
+        <!-- Hero Section -->
+        <section class="max-w-4xl" id="hero-section">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-outline-variant/30 glass-panel mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-tertiary animate-pulse"></span>
+                <span class="font-label text-[10px] tracking-[0.2em] uppercase text-tertiary">Sync: Active Epoch 1042</span>
+            </div>
+
+            <h1 class="font-headline text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                <span class="block text-on-surface">Kinetic Mind</span>
+                <span
+                    class="block text-transparent bg-clip-text bg-gradient-to-r from-tertiary via-primary to-tertiary pr-4 pb-2">Neural Engine</span>
+            </h1>
+
+            <p class="font-body text-lg text-on-surface-variant max-w-2xl mb-12 leading-relaxed">
+                Deep learning models actively processing volumetric rendering commands and user trajectory predictions in real-time.
+            </p>
+        </section>
+
+        <!-- Bento Grid Dashboard for Neural -->
+        <section class="mt-20 grid grid-cols-1 md:grid-cols-12 gap-6" id="bento-grid">
+            <!-- Processing Pipeline -->
+            <div class="md:col-span-6 glass-panel rounded-2xl p-8 border border-outline-variant/20 hover:border-tertiary/40 transition-colors duration-500">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-headline font-bold tracking-widest border border-tertiary/20 rounded-full">PIPELINE</span>
+                    <span class="material-symbols-outlined text-tertiary ml-auto">psychology</span>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-2">
+                            <span class="text-on-surface">Temporal Forecasting</span>
+                            <span class="text-tertiary">98.2%</span>
+                        </div>
+                        <div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-primary to-tertiary w-[98%] h-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-2">
+                            <span class="text-on-surface">Spatial Rendering</span>
+                            <span class="text-tertiary">85.4%</span>
+                        </div>
+                        <div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-primary to-tertiary w-[85%] h-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-mono mb-2">
+                            <span class="text-on-surface">Behavioral Analysis</span>
+                            <span class="text-tertiary">64.0%</span>
+                        </div>
+                        <div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-primary to-tertiary w-[64%] h-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Epoch Counter & Core Temp -->
+            <div class="md:col-span-6 grid grid-cols-2 gap-6">
+                <!-- Epoch card -->
+                <div class="col-span-2 sm:col-span-1 glass-panel rounded-2xl p-6 border border-outline-variant/20 hover:border-primary/40 transition-colors flex flex-col justify-between">
+                    <div class="text-[10px] text-on-surface-variant font-bold tracking-widest uppercase mb-4">Current Epoch</div>
+                    <div class="text-5xl font-headline font-black text-on-surface">1,042</div>
+                    <div class="text-xs text-on-surface-variant mt-4 font-mono"><span class="text-primary animate-pulse">●</span> Training active...</div>
+                </div>
+                
+                <!-- Loss Metric -->
+                <div class="col-span-2 sm:col-span-1 glass-panel rounded-2xl p-6 border border-outline-variant/20 hover:border-secondary/40 transition-colors flex flex-col justify-between">
+                    <div class="text-[10px] text-on-surface-variant font-bold tracking-widest uppercase mb-4">Validation Loss</div>
+                    <div class="text-4xl font-headline font-black text-secondary">0.0034</div>
+                    <div class="mt-4 w-full h-8 flex items-end gap-1">
+                        <!-- Tiny bar chart -->
+                        <div class="w-1/6 bg-secondary/80 h-[80%] rounded-t-sm"></div>
+                        <div class="w-1/6 bg-secondary/70 h-[60%] rounded-t-sm"></div>
+                        <div class="w-1/6 bg-secondary/60 h-[40%] rounded-t-sm"></div>
+                        <div class="w-1/6 bg-secondary/70 h-[45%] rounded-t-sm"></div>
+                        <div class="w-1/6 bg-secondary h-[20%] rounded-t-sm shadow-[0_0_8px_#53ddfc]"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Three.js and GSAP via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
