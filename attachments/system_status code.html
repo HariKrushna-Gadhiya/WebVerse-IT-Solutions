@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-highest": "#262626",
+                "on-surface-variant": "#adaaaa",
+                "on-surface": "#ffffff",
+                "on-secondary-container": "#ecfaff",
+                "secondary": "#53ddfc",
+                "on-primary-fixed-variant": "#0e009d",
+                "secondary-fixed": "#65e1ff",
+                "on-tertiary": "#33005b",
+                "error": "#ff6e84",
+                "tertiary-container": "#af5cfe",
+                "on-error-container": "#ffb2b9",
+                "primary-dim": "#6063ee",
+                "on-primary-container": "#0a0081",
+                "on-tertiary-fixed-variant": "#560094",
+                "surface-container-low": "#131313",
+                "outline-variant": "#494847",
+                "on-secondary": "#004b58",
+                "secondary-container": "#00687a",
+                "on-secondary-fixed-variant": "#005969",
+                "on-primary": "#0f00a4",
+                "surface-variant": "#262626",
+                "inverse-on-surface": "#565554",
+                "error-container": "#a70138",
+                "on-secondary-fixed": "#003a45",
+                "surface-container": "#1a1919",
+                "surface-bright": "#2c2c2c",
+                "primary-fixed-dim": "#8387ff",
+                "secondary-fixed-dim": "#48d4f3",
+                "tertiary-fixed-dim": "#c488ff",
+                "surface-container-high": "#201f1f",
+                "secondary-dim": "#40ceed",
+                "outline": "#777575",
+                "surface": "#0e0e0e",
+                "tertiary-dim": "#9c48ea",
+                "on-background": "#ffffff",
+                "background": "#0e0e0e",
+                "on-tertiary-fixed": "#270048",
+                "primary-container": "#9396ff",
+                "on-error": "#490013",
+                "tertiary-fixed": "#ce9bff",
+                "surface-container-lowest": "#000000",
+                "surface-dim": "#0e0e0e",
+                "primary": "#a3a6ff",
+                "error-dim": "#d73357",
+                "tertiary": "#c180ff",
+                "on-primary-fixed": "#000000",
+                "on-tertiary-container": "#000000",
+                "primary-fixed": "#9396ff",
+                "inverse-surface": "#fcf8f8",
+                "surface-tint": "#a3a6ff",
+                "inverse-primary": "#494bd7"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["Manrope"],
+                "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .kinetic-glow {
+            box-shadow: 0 0 20px rgba(163, 166, 255, 0.15);
+        }
+        .data-grid-bg {
+            background-image: radial-gradient(#494847 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-2xl bg-gradient-to-b from-[#131313] to-transparent shadow-[0_20px_50px_rgba(163,166,255,0.08)]">
+<div class="flex justify-between items-center px-12 py-6 max-w-[1920px] mx-auto">
+<div class="text-2xl font-black text-[#a3a6ff] tracking-tighter uppercase font-headline">
+                WebVerse
+            </div>
+<div class="hidden md:flex items-center gap-8 font-headline tracking-tight uppercase text-sm">
+<a class="text-[#494847] hover:text-[#a3a6ff] transition-colors duration-300 hover:scale-105" href="#">Solutions</a>
+<a class="text-[#494847] hover:text-[#a3a6ff] transition-colors duration-300 hover:scale-105" href="#">Network</a>
+<a class="text-[#494847] hover:text-[#a3a6ff] transition-colors duration-300 hover:scale-105" href="#">Neural</a>
+<a class="text-[#494847] hover:text-[#a3a6ff] transition-colors duration-300 hover:scale-105" href="#">Archive</a>
+<a class="text-[#a3a6ff] border-b-2 border-[#a3a6ff] pb-1 hover:scale-105" href="#">Terminal</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#494847] cursor-pointer hover:text-primary">search</span>
+<button class="bg-gradient-to-br from-primary to-primary-dim text-on-primary px-6 py-2 font-headline font-bold uppercase tracking-widest text-xs hover:scale-105 transition-transform cursor-pointer active:scale-95">
+                    Connect
+                </button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full z-40 flex flex-col bg-[#131313]/60 backdrop-blur-3xl h-screen w-20 hover:w-64 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden border-r border-[#494847]/15 shadow-[10px_0_30px_rgba(0,0,0,0.5)] group">
+<div class="p-6 pt-24 mb-8">
+<div class="text-[#a3a6ff] font-black uppercase tracking-[0.2em] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">WebVerse</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Kinetic OS v1.0</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<div class="flex items-center p-4 text-[#494847] opacity-60 hover:opacity-100 hover:bg-[#201f1f] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[48px]">rocket_launch</span>
+<span class="font-headline font-bold ml-4 whitespace-nowrap group-hover:translate-x-2 transition-transform">Solutions</span>
+</div>
+<div class="flex items-center p-4 text-[#494847] opacity-60 hover:opacity-100 hover:bg-[#201f1f] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[48px]">hub</span>
+<span class="font-headline font-bold ml-4 whitespace-nowrap group-hover:translate-x-2 transition-transform">Network</span>
+</div>
+<div class="flex items-center p-4 text-[#494847] opacity-60 hover:opacity-100 hover:bg-[#201f1f] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[48px]">psychology</span>
+<span class="font-headline font-bold ml-4 whitespace-nowrap group-hover:translate-x-2 transition-transform">Neural</span>
+</div>
+<div class="flex items-center p-4 text-[#494847] opacity-60 hover:opacity-100 hover:bg-[#201f1f] transition-all cursor-pointer">
+<span class="material-symbols-outlined min-w-[48px]">inventory_2</span>
+<span class="font-headline font-bold ml-4 whitespace-nowrap group-hover:translate-x-2 transition-transform">Archive</span>
+</div>
+<div class="flex items-center p-4 bg-gradient-to-r from-[#a3a6ff]/20 to-transparent text-[#a3a6ff] border-l-4 border-[#a3a6ff] cursor-pointer">
+<span class="material-symbols-outlined min-w-[48px]">terminal</span>
+<span class="font-headline font-bold ml-4 whitespace-nowrap group-hover:translate-x-2 transition-transform">Terminal</span>
+</div>
+</div>
+<div class="p-4 mb-8">
+<button class="w-full bg-surface-container-high border border-primary/20 text-primary py-3 rounded-none flex items-center justify-center gap-2 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">power_settings_new</span>
+<span class="hidden group-hover:block font-headline uppercase text-xs font-bold tracking-tighter">Initialize</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pl-20 pt-32 min-h-screen data-grid-bg relative overflow-x-hidden">
+<div class="max-w-7xl mx-auto px-12">
+<!-- Header Section -->
+<header class="mb-12 flex justify-between items-end">
+<div>
+<h1 class="font-headline text-5xl font-black text-on-surface tracking-tighter uppercase mb-2">System Status</h1>
+<p class="text-on-surface-variant font-body flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        Live Neural Throughput: 1.4 TB/s
+                    </p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low px-6 py-4 border-l border-primary">
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Global Latency</div>
+<div class="font-headline text-2xl font-bold text-secondary">24ms</div>
+</div>
+<div class="bg-surface-container-low px-6 py-4 border-l border-tertiary">
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Active Nodes</div>
+<div class="font-headline text-2xl font-bold text-tertiary">14,802</div>
+</div>
+</div>
+</header>
+<!-- Bento Dashboard Grid -->
+<div class="grid grid-cols-12 gap-6 mb-12">
+<!-- Main Visualization Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/15 p-8 relative overflow-hidden h-[450px]">
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex justify-between items-start mb-8">
+<h3 class="font-headline text-xl font-bold uppercase tracking-tight">Network Health Topology</h3>
+<div class="flex gap-2">
+<span class="bg-surface-container-highest px-3 py-1 text-[10px] uppercase font-bold tracking-widest">Real-time</span>
+<span class="bg-primary/20 text-primary px-3 py-1 text-[10px] uppercase font-bold tracking-widest">Nominal</span>
+</div>
+</div>
+<div class="flex-grow flex items-center justify-center relative">
+<!-- SVG Placeholder for Dynamic Visualization -->
+<div class="absolute inset-0 flex items-center justify-center">
+<img alt="Cyberpunk Data Visualization" class="w-full h-full object-cover opacity-20 mix-blend-screen" data-alt="Abstract 3D network visualization with glowing lines and particles on a dark background representing neural data flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnB5CMvPcQHi6bK9-FhHc8eb8W4OqU63SJvfp5M7pIv4ZrUp_FUtY8riNcrB8DonCSOmKtcnON-v9MLDZXgSF39mrU3XpH5t0e9t5B_40f1RpoNJecuWGMkZ5xVIfDaFCI3gRx9StO2coeT_R8_L1258L-DsMppuezicIYkWd3JOKHWRZa8PY-vCy3nEif45PRLVT6Wm6yK-DjST9QxzoxZXBNFVx2KsohRW2GunU_3xeFqQ2YVPxuC6kK2noQiXqEvucqAO1I5cLS"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="z-20 text-center">
+<div class="text-7xl font-black font-headline text-primary mb-2">99.98%</div>
+<div class="text-xs uppercase tracking-[0.4em] text-on-surface-variant">Uptime Efficiency Index</div>
+</div>
+</div>
+</div>
+<!-- Decorative HUD corners -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/40"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/40"></div>
+</div>
+<!-- Live System Feed -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-low border border-outline-variant/15 flex flex-col h-[450px]">
+<div class="p-6 border-b border-outline-variant/15 flex items-center justify-between">
+<h3 class="font-headline text-sm font-bold uppercase tracking-widest">Live System Feed</h3>
+<span class="material-symbols-outlined text-secondary text-lg">sensors</span>
+</div>
+<div class="flex-grow overflow-y-auto p-6 space-y-4 font-label text-[11px]">
+<div class="flex gap-4 border-l border-primary/30 pl-4 py-1">
+<span class="text-primary opacity-60">14:02:11</span>
+<span class="text-on-surface uppercase">Neural Bridge Established — HK-2</span>
+</div>
+<div class="flex gap-4 border-l border-outline-variant pl-4 py-1">
+<span class="text-on-surface-variant opacity-60">14:02:08</span>
+<span class="text-on-surface-variant uppercase">Archive sync complete — Cluster 09</span>
+</div>
+<div class="flex gap-4 border-l border-secondary/30 pl-4 py-1">
+<span class="text-secondary opacity-60">14:01:55</span>
+<span class="text-on-surface uppercase">Throughput peak detected: 2.1 TB/s</span>
+</div>
+<div class="flex gap-4 border-l border-error/30 pl-4 py-1">
+<span class="text-error opacity-60">14:01:22</span>
+<span class="text-error uppercase">Node timeout: Sector 7G (Auto-recovering)</span>
+</div>
+<div class="flex gap-4 border-l border-outline-variant pl-4 py-1">
+<span class="text-on-surface-variant opacity-60">14:01:05</span>
+<span class="text-on-surface-variant uppercase">Terminal auth granted: UID_9921</span>
+</div>
+<div class="flex gap-4 border-l border-outline-variant pl-4 py-1">
+<span class="text-on-surface-variant opacity-60">14:00:58</span>
+<span class="text-on-surface-variant uppercase">Routine latency sweep...</span>
+</div>
+<div class="flex gap-4 border-l border-primary/30 pl-4 py-1">
+<span class="text-primary opacity-60">14:00:11</span>
+<span class="text-on-surface uppercase">New project initialized: 'Event Horizon'</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container-highest/30">
+<div class="w-full bg-outline-variant/10 h-1 overflow-hidden">
+<div class="bg-primary h-full w-1/3 animate-pulse"></div>
+</div>
+</div>
+</div>
+<!-- Secondary Data Shards -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-high p-6 border border-outline-variant/10 group hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center mb-6">
+<span class="material-symbols-outlined text-tertiary">memory</span>
+<div class="text-[10px] font-bold text-on-surface-variant">CPU LOAD</div>
+</div>
+<div class="font-headline text-3xl font-black mb-1">42.8%</div>
+<div class="text-[10px] uppercase text-on-surface-variant tracking-widest mb-4">Core Velocity Nominal</div>
+<div class="h-12 flex items-end gap-1">
+<div class="bg-tertiary/20 w-full h-1/2"></div>
+<div class="bg-tertiary/40 w-full h-2/3"></div>
+<div class="bg-tertiary w-full h-5/6"></div>
+<div class="bg-tertiary/60 w-full h-3/4"></div>
+<div class="bg-tertiary/20 w-full h-1/4"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-high p-6 border border-outline-variant/10 group hover:border-secondary/40 transition-colors">
+<div class="flex justify-between items-center mb-6">
+<span class="material-symbols-outlined text-secondary">database</span>
+<div class="text-[10px] font-bold text-on-surface-variant">DISK ARRAY</div>
+</div>
+<div class="font-headline text-3xl font-black mb-1">1.2 PB</div>
+<div class="text-[10px] uppercase text-on-surface-variant tracking-widest mb-4">Available Storage Tier</div>
+<div class="h-12 grid grid-cols-8 gap-1">
+<div class="bg-secondary h-2"></div>
+<div class="bg-secondary h-2"></div>
+<div class="bg-secondary h-2"></div>
+<div class="bg-secondary/20 h-2"></div>
+<div class="bg-secondary/20 h-2"></div>
+<div class="bg-secondary/20 h-2"></div>
+<div class="bg-secondary/20 h-2"></div>
+<div class="bg-secondary/20 h-2"></div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-high p-6 border border-outline-variant/10 group hover:border-primary-dim/40 transition-colors">
+<div class="flex justify-between items-center mb-6">
+<span class="material-symbols-outlined text-primary-dim">public</span>
+<div class="text-[10px] font-bold text-on-surface-variant">TRAFFIC</div>
+</div>
+<div class="font-headline text-3xl font-black mb-1">842K</div>
+<div class="text-[10px] uppercase text-on-surface-variant tracking-widest mb-4">Requests Per Second</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-dim scale-75">trending_up</span>
+<span class="text-xs font-bold text-primary-dim">+12.4% from avg</span>
+</div>
+</div>
+</div>
+<!-- Active Projects Section -->
+<section class="mb-24">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="font-headline text-2xl font-black uppercase tracking-widest">Active Neural Projects</h2>
+<div class="h-[1px] flex-grow bg-gradient-to-r from-outline-variant/40 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Project Card -->
+<div class="group relative aspect-square bg-surface-container overflow-hidden border border-outline-variant/10">
+<img alt="Neural Mesh Project" class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" data-alt="Technological visualization of a glowing neural mesh network with purple and blue fiber optic connections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkhpFL_j_QGzQ9m-g-cTorxt4mmZ33B3mtk-syjc7eNt26eEl3cYS9GA38OAa6hDPuXgSlCKG1xJg-Qxg8Q_-HzFRe-RHm4pLsQZIpF7djfhhcs__ya_cJM-K03dAQS6HpRd4J3mesX-v-SGAX9g8a8BxwYea83Sghwti6frH7GlmjfsulhG5iVOaP8xCH_0H1iD2zqlQULHm0KT-fitNlgwleWufM440Jj8OfV0VrE_sMAt--Hatl7MHl8SNvjnUUx30cdxA0kDe1"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="text-[10px] text-tertiary font-black tracking-widest uppercase mb-2">Project: SYNAPSE</div>
+<h4 class="font-headline text-xl font-bold uppercase text-on-surface mb-4">Neural Mesh Expansion</h4>
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Phase: Integration</span>
+<span>82%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="bg-tertiary h-full w-[82%]"></div>
+</div>
+</div>
+</div>
+<!-- Project Card -->
+<div class="group relative aspect-square bg-surface-container overflow-hidden border border-outline-variant/10">
+<img alt="Event Horizon Project" class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" data-alt="Deep space nebula with swirling blue and violet energy around a glowing central point representing a data event horizon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHFhM1V4iFR4H3BelBtxF7z1p0bWFag8AyeLc3U98YcPZGc6cYpk9uAH2RIBAMzahYBDG2iRjP_b45BydGtEg3D0Ev1R_D4rrrBVY27gZl_4c7H-Az7TkVEMW8doCT0OKZjh_5Mvt0rNkUfJF14Z-jkiS3N1xQvTqzCjmX0pHCflpN7MaPUJ2CLh8Exulh-VSd7LGZyZYXTclN1if-_Qa8q3Luiy-ufvahfLqJHt15QXuuFWN_q7mYBZ9PTmHU3mi-3vrI-pRf68A2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="text-[10px] text-primary font-black tracking-widest uppercase mb-2">Project: HORIZON</div>
+<h4 class="font-headline text-xl font-bold uppercase text-on-surface mb-4">Zero-Latency Bridge</h4>
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Phase: Deployment</span>
+<span>45%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+</div>
+</div>
+<!-- Project Card -->
+<div class="group relative aspect-square bg-surface-container overflow-hidden border border-outline-variant/10">
+<img alt="Archive Protocol" class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" data-alt="High-tech server room with glowing rack lights and cooling systems representing a massive data archive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw4sN3kcKr2UUq1RGIEc2izdSMyh3EM8wP-jVyQZQ_JQWjv5KJfbRkrvJkwEjFHufG_TmkSiq0Q-5WXBE_EAFj_eLOY-6nQXTvff3Onj8qbFIN-A5GE4o66mEbxohFxymcEBfHR5jSSx7Z9JsDRj9qwZ-lkD1FWIutdq0KjBDwgumqM9A80rxcfrehG3vJbuSMRIAFNKAzhEWdOE1DywCQVO1TaKKrq0YfCbRXqEtaEMbfG8VRDVxKjlq2cwNyBwYdtG4kHHR4kJsb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="text-[10px] text-secondary font-black tracking-widest uppercase mb-2">Project: KINETIC</div>
+<h4 class="font-headline text-xl font-bold uppercase text-on-surface mb-4">Obsidian Core v4</h4>
+<div class="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+<span>Phase: Alpha Test</span>
+<span>12%</span>
+</div>
+<div class="w-full h-1 bg-surface-container-highest mt-2">
+<div class="bg-secondary h-full w-[12%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="bg-[#0e0e0e] w-full py-12 border-t border-[#494847]/10 flex flex-col md:flex-row justify-between items-center px-12 gap-8">
+<div class="font-['Manrope'] text-xs uppercase tracking-widest text-[#494847]">
+                © 2024 WebVerse. The Event Horizon Protocol.
+            </div>
+<div class="flex gap-8">
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#494847] hover:text-[#53ddfc] transition-colors duration-300" href="#">Privacy</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#494847] hover:text-[#53ddfc] transition-colors duration-300" href="#">Security</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#494847] hover:text-[#53ddfc] transition-colors duration-300" href="#">Latency</a>
+<a class="font-['Manrope'] text-xs uppercase tracking-widest text-[#494847] hover:text-[#53ddfc] transition-colors duration-300" href="#">Status</a>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB (Initialize Primary Action) -->
+<button class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-primary text-on-primary shadow-2xl flex items-center justify-center group overflow-hidden">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform duration-500">settings_input_component</span>
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</body></html>
