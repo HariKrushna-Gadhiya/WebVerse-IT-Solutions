@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Infynoweb Solution</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-card {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(58,123,213,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--c-brand-1);
+            border-bottom: 1px solid var(--c-border);
+        }
+        .project-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .review-card {
+            padding: 3rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .stars {
+            color: #FFD700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .reviewer-name {
+            font-family: var(--f-heading);
+            font-weight: 700;
+            margin-top: 1.5rem;
+            color: var(--c-brand-1);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <div id="loader">
+        <div class="loader-circle"></div>
+    </div>
+    
+    <div id="webgl-container"></div>
+
+    <nav class="navbar glass">
+        <a href="index.html" class="nav-brand text-gradient">
+            INFYNOWEB SOLUTION
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="magnetic hover-link">Home</a></li>
+            <li><a href="services.html" class="magnetic hover-link">Services</a></li>
+            <li><a href="packages.html" class="magnetic hover-link">Packages</a></li>
+            <li><a href="projects.html" class="active magnetic hover-link">Projects</a></li>
+            <li><a href="contact.html" class="magnetic hover-link">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary magnetic" style="padding: 0.5rem 1.5rem; font-size: 0.75rem;">Get Started</a>
+    </nav>
+
+    <main class="content-wrapper">
+        <section class="container" style="padding-top: 10rem; padding-bottom: 4rem;">
+            <div class="section-header fade-in-up">
+                <div class="status-pill mb-4" style="margin-bottom: 1rem;">
+                    <span class="status-dot"></span>
+                    Portfolio
+                </div>
+                <h1 class="heading reveal-text" style="font-size: clamp(2.5rem, 6vw, 4rem);">
+                    Featured <span class="text-gradient">Projects</span>
+                </h1>
+                <p class="subtitle reveal-text" style="margin: 1.5rem auto 0 auto; text-align: center;">
+                    Explore our recent works. We transform complex visions into elegant, high-performance digital realities.
+                </p>
+            </div>
+
+            <div class="grid-3 mt-12 fade-in-up" style="animation-delay: 0.2s;">
+                
+                <!-- Project 1 -->
+                <div class="glass project-card service-card">
+                    <div class="project-image">✧</div>
+                    <div class="project-info">
+                        <div>
+                            <h3>NexGen Finance App</h3>
+                            <p>A comprehensive web portal for a fintech startup, featuring real-time data visualization, secure auth, and a dynamic dashboard.</p>
+                        </div>
+                        <a href="contact.html" class="btn-link">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass project-card service-card">
+                    <div class="project-image">◈</div>
+                    <div class="project-info">
+                        <div>
+                            <h3>Lumina E-Commerce</h3>
+                            <p>A high-converting online store with seamless 3D product previews, headless CMS integration, and sub-second load times.</p>
+                        </div>
+                        <a href="contact.html" class="btn-link">View Case Study →</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass project-card service-card">
+                    <div class="project-image">⟡</div>
+                    <div class="project-info">
+                        <div>
+                            <h3>Aeris Global Agency</h3>
+                            <p>An immersive digital agency website featuring WebGL floating animations, smooth scroll, and glassmorphism UI elements.</p>
+                        </div>
+                        <a href="contact.html" class="btn-link">View Case Study →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="container" style="padding-top: 4rem; padding-bottom: 6rem;">
+            <div class="section-header fade-in-up">
+                <h2 class="heading reveal-text" style="font-size: clamp(2rem, 5vw, 3rem);">
+                    Client <span class="text-gradient">Testimonials</span>
+                </h2>
+                <p class="subtitle reveal-text" style="margin: 1rem auto 0 auto; text-align: center;">
+                    Hear from the global brands and forward-thinking enterprises that partner with us.
+                </p>
+            </div>
+
+            <div class="grid-3 mt-12 fade-in-up" style="animation-delay: 0.3s;">
+                <!-- Review 1 -->
+                <div class="glass review-card">
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <p style="color: var(--c-text-secondary); font-style: italic;">
+                            "Infynoweb completely revolutionized our digital presence. The new platform handles our rapid scaling effortlessly, and the aesthetics are simply mind-blowing."
+                        </p>
+                    </div>
+                    <div class="reviewer-name">Sarah Jenkins<br><span style="font-size: 0.8rem; color: var(--c-text-secondary); font-weight: 400;">CTO, NexGen Finance</span></div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass review-card">
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <p style="color: var(--c-text-secondary); font-style: italic;">
+                            "The team’s expertise in modern web technologies drastically improved our conversion rates. Their attention to detail and performance optimization is unparalleled."
+                        </p>
+                    </div>
+                    <div class="reviewer-name">Marcus Cole<br><span style="font-size: 0.8rem; color: var(--c-text-secondary); font-weight: 400;">Director, Lumina</span></div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass review-card">
+                    <div>
+                        <div class="stars">★★★★★</div>
+                        <p style="color: var(--c-text-secondary); font-style: italic;">
+                            "Working with them was the best decision we made this year. They delivered an immersive 3D experience that outshines all our competitors globally."
+                        </p>
+                    </div>
+                    <div class="reviewer-name">Elena Rodriguez<br><span style="font-size: 0.8rem; color: var(--c-text-secondary); font-weight: 400;">Founder, Aeris Global</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer class="footer glass mt-20" id="contact" style="margin-top: 5rem; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 0;">
+        <div class="container" style="padding: 4rem 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3rem;">
+            <div class="footer-brand fade-in-up" style="max-width: 300px;">
+                <h3 class="nav-brand text-gradient" style="margin-bottom: 1.5rem;">INFYNOWEB SOLUTION</h3>
+                <p class="subtitle" style="margin: 0;">Elevating digital landscapes on a global scale. Your premier partner in innovation.</p>
+            </div>
+            
+            <div class="footer-contact fade-in-up" style="animation-delay: 0.1s;">
+                <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--c-brand-1);">Contact Us</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; color: var(--c-text-secondary);">
+                    <a href="mailto:infynowebsolution@gmail.com" class="magnetic hover-link" style="color: inherit; text-decoration: none;">📧 infynowebsolution@gmail.com</a>
+                    <a href="https://instagram.com/infynoweb.solution" target="_blank" class="magnetic hover-link" style="color: inherit; text-decoration: none;">📸 @infynoweb.solution</a>
+                </div>
+            </div>
+
+            <div class="footer-phones fade-in-up" style="animation-delay: 0.2s;">
+                <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--c-brand-1);">Direct Lines</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.25rem; color: var(--c-text-secondary); font-family: monospace; font-size: 0.9rem;">
+                    <a href="tel:+919737219411" class="magnetic hover-link" style="color: inherit; text-decoration: none;">📞 +91 97372 19411</a>
+                    <a href="tel:+919974445844" class="magnetic hover-link" style="color: inherit; text-decoration: none;">📞 +91 99744 45844</a>
+                    <a href="tel:+919227405004" class="magnetic hover-link" style="color: inherit; text-decoration: none;">📞 +91 92274 05004</a>
+                    <a href="tel:+919974086642" class="magnetic hover-link" style="color: inherit; text-decoration: none;">📞 +91 99740 86642</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 1.5rem; border-top: 1px solid var(--c-border); color: var(--c-text-secondary); font-size: 0.8rem;">
+            &copy; 2026 Infynoweb Solution. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
