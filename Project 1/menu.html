@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Catering Services | Menu</title>
+    <meta name="description" content="Explore our diverse and premium catering menu.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-transition">
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Krishna Catering</span>
+            </a>
+            <nav class="navbar" id="navbar">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="contact.html" class="btn btn-primary">Book Now</a>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-bg">
+                <img src="assets/menu_paneer.png" alt="Menu Header">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="page-header-content">
+                <h1>Our Exquisite Menu</h1>
+                <p>A culinary journey tailored to your taste.</p>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section class="menu section bg-light" id="menu">
+            <div class="container">
+                <div class="section-title center">
+                    <span class="subtitle">Our Menu</span>
+                    <h2>Discover Our Signature Dishes</h2>
+                    <p>Curated with passion, served with perfection.</p>
+                </div>
+
+                <div class="menu-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="starters">Starters</button>
+                    <button class="filter-btn" data-filter="mains">Main Course</button>
+                    <button class="filter-btn" data-filter="desserts">Desserts</button>
+                </div>
+
+                <div class="menu-grid">
+                    <!-- Menu Item 1 -->
+                    <div class="menu-card" data-category="starters">
+                        <div class="menu-img">
+                            <img src="assets/menu_samosa.png" alt="Crispy Samosa">
+                            <span class="price">₹150</span>
+                        </div>
+                        <div class="menu-info">
+                            <h3>Golden Crisp Samosas</h3>
+                            <p>Served with sweet and spicy tamarind chutney.</p>
+                        </div>
+                    </div>
+
+                    <!-- Menu Item 2 -->
+                    <div class="menu-card" data-category="mains">
+                        <div class="menu-img">
+                            <img src="assets/menu_paneer.png" alt="Paneer Butter Masala">
+                            <span class="price">₹350</span>
+                        </div>
+                        <div class="menu-info">
+                            <h3>Paneer Butter Masala</h3>
+                            <p>Rich, creamy tomato gravy with tender paneer cubes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Menu Item 3 -->
+                    <div class="menu-card" data-category="mains">
+                        <div class="menu-img">
+                            <div class="placeholder-img" style="background-color: #ffd166;">
+                                <i class="fa-solid fa-bowl-rice fa-3x" style="color: #fff;"></i>
+                            </div>
+                            <span class="price">₹280</span>
+                        </div>
+                        <div class="menu-info">
+                            <h3>Hyderabadi Veg Biryani</h3>
+                            <p>Aromatic basmati rice cooked with exotic spices and vegetables.</p>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Menu Item 4 -->
+                    <div class="menu-card" data-category="desserts">
+                        <div class="menu-img">
+                            <div class="placeholder-img" style="background-color: #ef476f;">
+                                <i class="fa-solid fa-ice-cream fa-3x" style="color: #fff;"></i>
+                            </div>
+                            <span class="price">₹120</span>
+                        </div>
+                        <div class="menu-info">
+                            <h3>Classic Gulab Jamun</h3>
+                            <p>Soft, melt-in-your-mouth khoya dumplings in sugar syrup.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Items for the separate page to make it fuller -->
+                    <div class="menu-card" data-category="starters">
+                        <div class="menu-img">
+                            <div class="placeholder-img" style="background-color: #06d6a0;">
+                                <i class="fa-solid fa-leaf fa-3x" style="color: #fff;"></i>
+                            </div>
+                            <span class="price">₹180</span>
+                        </div>
+                        <div class="menu-info">
+                            <h3>Hara Bhara Kebab</h3>
+                            <p>Healthy and delicious patties made with spinach, peas, and potatoes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-card" data-category="mains">
+                        <div class="menu-img">
+                            <div class="placeholder-img" style="background-color: #118ab2;">
+                                <i class="fa-solid fa-fire-burner fa-3x" style="color: #fff;"></i>
+                            </div>
+                            <span class="price">₹320</span>
+                        </div>
+                        <div class="menu-info">
+                            <h3>Dal Makhani</h3>
+                            <p>Black lentils simmered overnight on a slow fire, finished with cream and butter.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Packages Section -->
+                <div style="padding-top: 40px; margin-top: 4rem; border-top: 1px solid #eee;">
+                    <div class="section-title center" style="margin-bottom: 2rem;">
+                        <span class="subtitle">Packages</span>
+                        <h2>Choose Your <em>Package</em></h2>
+                        <p>Flexible, transparent pricing designed for every occasion and budget.</p>
+                    </div>
+                    <div class="package-cards">
+                        <div class="pkg-card">
+                            <div class="pkg-name">🌿 Basic</div>
+                            <div class="pkg-price">₹350</div>
+                            <div class="pkg-price-note">per person (min. 50 guests)</div>
+                            <ul class="pkg-features">
+                                <li>2 Sabji + Dal + Rice</li>
+                                <li>2 Roti varieties</li>
+                                <li>Salad & Papad</li>
+                                <li>1 Sweet dish</li>
+                                <li>Chaas / Water</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-card featured">
+                            <div class="pkg-featured-badge">✨ Most Popular</div>
+                            <div class="pkg-name">🍽 Standard</div>
+                            <div class="pkg-price">₹650</div>
+                            <div class="pkg-price-note">per person (min. 100 guests)</div>
+                            <ul class="pkg-features">
+                                <li>Live counters (2)</li>
+                                <li>4 Sabji + 2 Dal varieties</li>
+                                <li>Biryani + 3 Roti types</li>
+                                <li>Starter platter</li>
+                                <li>3 Sweet dishes</li>
+                                <li>Welcome drink</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-card">
+                            <div class="pkg-name">👑 Premium</div>
+                            <div class="pkg-price">₹1,100</div>
+                            <div class="pkg-price-note">per person (min. 200 guests)</div>
+                            <ul class="pkg-features">
+                                <li>Live counters (5+)</li>
+                                <li>Full thali experience</li>
+                                <li>Chef stationed service</li>
+                                <li>Chaat & Snack stations</li>
+                                <li>Dessert live counter</li>
+                                <li>Décor & setup included</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-action">
+                    <a href="contact.html" class="btn btn-primary">Book Now for Your Event</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Krishna Catering</span>
+                    </a>
+                    <p>Delivering premium culinary experiences with impeccable service since 2008. Your trusted catering partner.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="contact.html">Wedding Catering</a></li>
+                        <li><a href="contact.html">Corporate Events</a></li>
+                        <li><a href="contact.html">Private Parties</a></li>
+                        <li><a href="#">Live Counters</a></li>
+                        <li><a href="#">Menu Tasting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Krishna Catering Services. All Rights Reserved.</p>
+                <p>Designed with love for memorable events.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

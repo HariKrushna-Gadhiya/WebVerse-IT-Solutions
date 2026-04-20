@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shree Annapurna Catering — Premium Catering Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8610A;
+    --saffron-light: #F9A04B;
+    --saffron-pale: #FEF3EA;
+    --gold: #C8860A;
+    --gold-light: #F5D78E;
+    --cream: #FDFAF4;
+    --dark: #1C1206;
+    --dark2: #2E1F0C;
+    --text: #3A2610;
+    --muted: #7A6147;
+    --border: #E8D9C0;
+    --white: #FFFFFF;
+    --shadow: 0 4px 24px rgba(28,18,6,0.08);
+    --shadow-lg: 0 12px 48px rgba(28,18,6,0.14);
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(253,250,244,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: var(--shadow); }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 42px; height: 42px;
+    background: var(--saffron);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: white;
+  }
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-text span:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--dark);
+  }
+  .nav-logo-text span:last-child {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--saffron); font-weight: 500;
+  }
+  .nav-links {
+    display: flex; gap: 0; list-style: none;
+    align-items: center;
+  }
+  .nav-links li a {
+    text-decoration: none; color: var(--text);
+    font-size: 14px; font-weight: 500;
+    padding: 8px 16px; border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .nav-links li a:hover, .nav-links li a.active {
+    background: var(--saffron-pale);
+    color: var(--saffron);
+  }
+  .nav-cta {
+    background: var(--saffron) !important;
+    color: white !important;
+    padding: 10px 22px !important;
+    border-radius: 8px !important;
+  }
+  .nav-cta:hover { background: #c95508 !important; color: white !important; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; padding: 4px;
+    background: none; border: none;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--dark); border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ─── PAGES ───────────────────────────────────── */
+  .page { display: none; padding-top: 72px; }
+  .page.active { display: block; }
+
+  /* ─── HOME ─────────────────────────────────────── */
+  .hero {
+    min-height: 92vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 5% 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, #FEF3EA 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--saffron-pale);
+    border: 1px solid #F9C898;
+    color: var(--saffron);
+    padding: 6px 16px; border-radius: 40px;
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-badge span { width: 6px; height: 6px; background: var(--saffron); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero h1 em { font-style: italic; color: var(--saffron); }
+  .hero p {
+    font-size: 17px; color: var(--muted);
+    max-width: 460px; line-height: 1.8;
+    margin-bottom: 36px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 10px;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    text-decoration: none; border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary { background: var(--saffron); color: white; }
+  .btn-primary:hover { background: #c95508; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,97,10,0.35); }
+  .btn-outline {
+    background: white; color: var(--saffron);
+    border: 1.5px solid var(--saffron);
+  }
+  .btn-outline:hover { background: var(--saffron-pale); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 48px;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .hero-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: var(--dark);
+    line-height: 1;
+  }
+  .hero-stat .lbl { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  .hero-visual {
+    position: relative;
+    animation: fadeIn 0.8s 0.3s ease both;
+  }
+  .hero-img-main {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #F9A04B 0%, #E8610A 40%, #C8860A 100%);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-main svg { opacity: 0.15; }
+  .hero-plate-art {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    font-size: 120px; line-height: 1;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+  }
+  .hero-float-card {
+    position: absolute; bottom: -20px; left: -20px;
+    background: white; border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: var(--shadow-lg);
+    display: flex; align-items: center; gap: 12px;
+    min-width: 200px;
+  }
+  .hero-float-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--saffron-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .hero-float-card p { font-size: 13px; color: var(--muted); }
+  .hero-float-card strong { font-size: 15px; color: var(--dark); display: block; }
+
+  .hero-float-card2 {
+    position: absolute; top: 20px; right: -20px;
+    background: var(--dark); color: white;
+    border-radius: 14px; padding: 14px 18px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    min-width: 130px;
+  }
+  .hero-float-card2 .big { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--saffron-light); }
+  .hero-float-card2 .sm { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    background: var(--dark);
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 22s linear infinite;
+    width: max-content;
+  }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 32px;
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .marquee-dot { width: 4px; height: 4px; background: var(--saffron); border-radius: 50%; }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; }
+  .section-tag {
+    display: inline-block;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 12px;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 700; color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  h2.section-title em { font-style: italic; color: var(--saffron); }
+  .section-subtitle { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.8; margin-bottom: 50px; }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: white;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .about-img-wrap { position: relative; }
+  .about-img {
+    width: 100%; aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--saffron-pale), #F9C898);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 100px; position: relative; overflow: hidden;
+  }
+  .about-badge {
+    position: absolute; bottom: 24px; right: -20px;
+    background: var(--saffron); color: white;
+    border-radius: 14px; padding: 16px 20px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+  }
+  .about-badge .big { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1; }
+  .about-badge .sm { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+  .about-feats { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .about-feat {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 16px; background: var(--cream);
+    border-radius: var(--radius); border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .about-feat:hover { background: var(--saffron-pale); border-color: #F9C898; }
+  .about-feat-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    background: var(--saffron-pale); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .about-feat h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+  .about-feat p { font-size: 13px; color: var(--muted); }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: white; border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--saffron);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 56px; height: 56px;
+    background: var(--saffron-pale); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin-bottom: 20px;
+  }
+  .service-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--dark); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+  .service-tag {
+    display: inline-block; font-size: 12px; font-weight: 600;
+    color: var(--saffron); background: var(--saffron-pale);
+    padding: 4px 12px; border-radius: 40px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PROCESS */
+  .process-wrap { background: var(--dark); padding: 90px 5%; }
+  .process-wrap .section-tag { color: var(--saffron-light); }
+  .process-wrap h2.section-title { color: white; }
+  .process-wrap .section-subtitle { color: rgba(255,255,255,0.5); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: var(--radius-lg); overflow: hidden; }
+  .process-step {
+    background: var(--dark2);
+    padding: 36px 28px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .process-step:hover { background: #3d2910; }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px; font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    position: absolute; top: 16px; right: 20px;
+    line-height: 1;
+  }
+  .step-icon {
+    font-size: 32px; margin-bottom: 16px;
+  }
+  .process-step h4 {
+    font-size: 16px; font-weight: 600;
+    color: white; margin-bottom: 8px;
+  }
+  .process-step p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--cream); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .testi-card {
+    background: white; border-radius: var(--radius-lg);
+    padding: 28px; border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .testi-card:hover { box-shadow: var(--shadow); }
+  .testi-stars { display: flex; gap: 4px; margin-bottom: 16px; }
+  .star { color: var(--gold); font-size: 16px; }
+  .testi-text { font-size: 14px; color: var(--muted); line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--saffron);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 600; font-size: 16px;
+  }
+  .testi-name { font-size: 14px; font-weight: 600; color: var(--dark); }
+  .testi-role { font-size: 12px; color: var(--muted); }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: linear-gradient(135deg, var(--saffron) 0%, #c95508 50%, var(--gold) 100%);
+    padding: 80px 5%;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: '🍽';
+    position: absolute; font-size: 300px;
+    opacity: 0.04;
+    top: -60px; left: -60px;
+    line-height: 1;
+  }
+  .cta-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px); font-weight: 700;
+    color: white; margin-bottom: 16px;
+  }
+  .cta-strip p { color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 36px; }
+  .cta-strip .btn { background: white; color: var(--saffron); }
+  .cta-strip .btn:hover { background: var(--cream); }
+
+  /* ─── MENU PAGE ─────────────────────────────────── */
+  .menu-hero {
+    background: var(--dark);
+    padding: 80px 5% 60px;
+    text-align: center;
+  }
+  .menu-hero .section-tag { color: var(--saffron-light); }
+  .menu-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; color: white; margin-bottom: 16px; }
+  .menu-hero p { color: rgba(255,255,255,0.6); font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+  .menu-filters {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 5% 0;
+  }
+  .filter-btn {
+    padding: 10px 22px; border-radius: 40px;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    border: 1.5px solid var(--border);
+    background: white; color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--saffron); color: white; border-color: var(--saffron);
+  }
+
+  .menu-section { padding: 60px 5%; }
+  .menu-category { margin-bottom: 60px; }
+  .menu-cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600; color: var(--dark);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .menu-cat-title::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+  .menu-item {
+    background: white; border-radius: var(--radius);
+    border: 1px solid var(--border); padding: 20px;
+    display: flex; align-items: flex-start; gap: 14px;
+    transition: all 0.2s;
+  }
+  .menu-item:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+  .menu-item-icon {
+    width: 48px; height: 48px; min-width: 48px;
+    border-radius: 10px; background: var(--saffron-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+  }
+  .menu-item h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .menu-item p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .menu-item-badges { display: flex; gap: 6px; margin-top: 8px; }
+  .badge {
+    font-size: 11px; font-weight: 500;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .badge-veg { background: #EAF7EE; color: #1A7A38; }
+  .badge-spicy { background: #FEF3EA; color: var(--saffron); }
+  .badge-popular { background: #FEF9EA; color: var(--gold); }
+
+  .package-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  .pkg-card {
+    background: white; border-radius: var(--radius-lg);
+    border: 2px solid var(--border); padding: 32px 28px;
+    text-align: center; transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .pkg-card.featured { border-color: var(--saffron); }
+  .pkg-featured-badge {
+    position: absolute; top: 0; left: 0; right: 0;
+    background: var(--saffron); color: white;
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; padding: 6px;
+  }
+  .pkg-card.featured { padding-top: 46px; }
+  .pkg-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .pkg-price { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--saffron); margin: 16px 0 4px; }
+  .pkg-price-note { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .pkg-features { list-style: none; text-align: left; margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .pkg-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); }
+  .pkg-features li::before { content: '✓'; color: var(--saffron); font-weight: 700; }
+  .pkg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+  /* ─── GALLERY PAGE ──────────────────────────────── */
+  .gallery-hero {
+    background: linear-gradient(135deg, var(--saffron-pale) 0%, #FFF7EE 100%);
+    padding: 80px 5% 60px; text-align: center;
+  }
+  .gallery-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+
+  .gallery-tabs {
+    display: flex; gap: 0; justify-content: center;
+    padding: 32px 5% 0;
+    border-bottom: 2px solid var(--border);
+  }
+  .gallery-tab {
+    padding: 12px 28px; font-size: 15px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    border: none; background: none; font-family: 'DM Sans', sans-serif;
+    color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px;
+  }
+  .gallery-tab.active { color: var(--saffron); border-bottom-color: var(--saffron); }
+  .gallery-tab:hover { color: var(--saffron); }
+
+  .gallery-content { padding: 48px 5%; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1;
+    cursor: pointer;
+    background: var(--saffron-pale);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s;
+  }
+  .gallery-item:nth-child(3n+1) { grid-column: span 2; aspect-ratio: 2/1; }
+  .gallery-item:hover { transform: scale(0.98); }
+  .gallery-item .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,18,6,0.7) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 16px;
+  }
+  .gallery-item:hover .overlay { opacity: 1; }
+  .overlay-text { color: white; font-size: 14px; font-weight: 500; }
+  .gallery-emoji { font-size: 60px; }
+  .gallery-item:nth-child(3n+1) .gallery-emoji { font-size: 90px; }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .video-card {
+    background: var(--dark); border-radius: var(--radius-lg);
+    overflow: hidden; cursor: pointer;
+    position: relative; transition: transform 0.2s;
+  }
+  .video-card:hover { transform: scale(0.98); }
+  .video-thumb {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #3d2910, var(--dark2));
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .video-thumb-emoji { font-size: 52px; }
+  .play-btn {
+    position: absolute;
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+  .video-card:hover .play-btn { transform: scale(1.1); }
+  .video-info { padding: 16px; }
+  .video-info h4 { color: white; font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .video-info p { color: rgba(255,255,255,0.5); font-size: 12px; }
+  .video-duration {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(0,0,0,0.7); color: white;
+    font-size: 11px; padding: 3px 8px; border-radius: 4px;
+  }
+
+  /* ─── CONTACT PAGE ──────────────────────────────── */
+  .contact-hero {
+    background: var(--dark);
+    padding: 80px 5% 60px; text-align: center;
+  }
+  .contact-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; color: white; margin-bottom: 16px; }
+  .contact-hero p { color: rgba(255,255,255,0.6); font-size: 16px; }
+
+  .contact-wrap {
+    padding: 80px 5%;
+    display: grid; grid-template-columns: 5fr 7fr;
+    gap: 60px;
+  }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--dark); margin-bottom: 16px; }
+  .contact-info > p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 40px; }
+  .contact-items { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-item-icon {
+    width: 48px; height: 48px; min-width: 48px;
+    background: var(--saffron-pale); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+  }
+  .contact-item h4 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .contact-item p { font-size: 14px; color: var(--muted); }
+  .contact-item a { color: var(--saffron); text-decoration: none; }
+  .social-links { display: flex; gap: 12px; margin-top: 40px; }
+  .social-link {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--saffron-pale); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; cursor: pointer; transition: all 0.2s;
+    text-decoration: none;
+  }
+  .social-link:hover { background: var(--saffron); transform: translateY(-2px); }
+
+  .contact-form {
+    background: white; border-radius: var(--radius-lg);
+    padding: 40px; border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: var(--dark); margin-bottom: 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    font-size: 14px; font-family: 'DM Sans', sans-serif;
+    color: var(--text); background: var(--cream);
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--saffron);
+    background: white;
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-success {
+    display: none;
+    text-align: center; padding: 32px;
+  }
+  .form-success .check { font-size: 56px; margin-bottom: 16px; }
+  .form-success h4 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--dark); margin-bottom: 8px; }
+  .form-success p { color: var(--muted); }
+
+  /* MAP */
+  .map-section { padding: 0 5% 80px; }
+  .map-wrap {
+    background: var(--saffron-pale);
+    border-radius: var(--radius-lg);
+    overflow: hidden; border: 1px solid var(--border);
+    height: 320px; display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .map-placeholder { text-align: center; }
+  .map-placeholder .icon { font-size: 48px; margin-bottom: 12px; }
+  .map-placeholder h4 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--dark); margin-bottom: 6px; }
+  .map-placeholder p { color: var(--muted); font-size: 14px; }
+
+  /* FAQ */
+  .faq-section { background: white; padding: 90px 5%; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; max-width: 900px; margin-left: auto; margin-right: auto; }
+  .faq-item {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 20px; cursor: pointer;
+    font-size: 14px; font-weight: 600; color: var(--dark);
+    user-select: none; transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--saffron-pale); }
+  .faq-q.open { background: var(--saffron-pale); color: var(--saffron); }
+  .faq-chevron { font-size: 12px; transition: transform 0.3s; }
+  .faq-q.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .faq-a.open { max-height: 200px; }
+  .faq-a-inner { padding: 16px 20px; font-size: 13px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 5% 30px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.8; margin-top: 16px; max-width: 280px; }
+  .footer-logo-text span:first-child { color: white !important; }
+  .footer-col h4 { color: white; font-size: 14px; font-weight: 600; margin-bottom: 20px; letter-spacing: 0.5px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.5); font-size: 14px; text-decoration: none;
+    transition: color 0.2s; cursor: pointer;
+  }
+  .footer-col ul li a:hover { color: var(--saffron-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 13px; }
+  .footer-bottom span { color: var(--saffron-light); }
+
+  /* ─── LIGHTBOX ──────────────────────────────────── */
+  .lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(0,0,0,0.92);
+    align-items: center; justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-inner { text-align: center; color: white; font-size: 100px; }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none;
+    color: white; font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+  /* MOBILE NAV */
+  .mobile-nav {
+    display: none;
+    position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+    background: var(--cream); z-index: 999;
+    padding: 32px 5%;
+    flex-direction: column; gap: 8px;
+    overflow-y: auto;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    text-decoration: none; color: var(--text);
+    font-size: 18px; font-weight: 500;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 60px 5%; }
+    .hero-visual { display: none; }
+    .hero-stats { gap: 24px; }
+    .about-strip { grid-template-columns: 1fr; }
+    .about-img-wrap { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr 1fr; }
+    .package-cards { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item:nth-child(3n+1) { grid-column: span 1; aspect-ratio: 1; }
+    .video-grid { grid-template-columns: 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; }
+  }
+
+  /* ANIMATIONS ON SCROLL */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">🍽</div>
+    <div class="nav-logo-text">
+      <span>Shree Annapurna</span>
+      <span>Catering Services</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+    <li><a onclick="showPage('menu')" id="nav-menu">Menu</a></li>
+    <li><a onclick="showPage('gallery')" id="nav-gallery">Gallery</a></li>
+    <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+    <li><a onclick="showPage('contact')" class="nav-cta btn">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="showPage('home');toggleMobileNav()">🏠 Home</a>
+  <a onclick="showPage('menu');toggleMobileNav()">🍛 Menu</a>
+  <a onclick="showPage('gallery');toggleMobileNav()">📸 Gallery</a>
+  <a onclick="showPage('contact');toggleMobileNav()">📞 Contact</a>
+  <a onclick="showPage('contact');toggleMobileNav()" style="color:var(--saffron);font-weight:700">📅 Book Now</a>
+</div>
+
+<!-- ═══════════════════════════════ HOME PAGE ════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge"><span></span> Trusted Since 1998 · Surat, Gujarat</div>
+      <h1>Crafting <em>Unforgettable</em><br>Culinary Experiences</h1>
+      <p>From intimate gatherings to grand celebrations — we bring authentic flavors, impeccable service, and heartfelt hospitality to every occasion.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="showPage('contact')">📅 Book Your Event</button>
+        <button class="btn btn-outline" onclick="showPage('menu')">🍛 View Menu</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">25+</div><div class="lbl">Years Experience</div></div>
+        <div class="hero-stat"><div class="num">5,000+</div><div class="lbl">Events Catered</div></div>
+        <div class="hero-stat"><div class="num">50k+</div><div class="lbl">Guests Served</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-main">
+        <div class="hero-plate-art">🍽</div>
+      </div>
+      <div class="hero-float-card">
+        <div class="hero-float-icon">⭐</div>
+        <div>
+          <strong>4.9 / 5 Rating</strong>
+          <p>1,200+ reviews</p>
+        </div>
+      </div>
+      <div class="hero-float-card2">
+        <div class="big">100%</div>
+        <div class="sm">Fresh & Hygienic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <div class="marquee-item"><div class="marquee-dot"></div>Wedding Feasts</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Corporate Lunches</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Birthday Celebrations</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Festival Events</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Pooja & Rituals</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Ring Ceremonies</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Anniversary Dinners</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>College Events</div>
+      <!-- duplicate for seamless loop -->
+      <div class="marquee-item"><div class="marquee-dot"></div>Wedding Feasts</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Corporate Lunches</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Birthday Celebrations</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Festival Events</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Pooja & Rituals</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Ring Ceremonies</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>Anniversary Dinners</div>
+      <div class="marquee-item"><div class="marquee-dot"></div>College Events</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-strip reveal">
+    <div class="about-img-wrap">
+      <div class="about-img">🧑‍🍳
+        <div class="about-badge">
+          <div class="big">25</div>
+          <div class="sm">Years of Trust</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Our Story</div>
+      <h2 class="section-title">Where Every Meal Tells a <em>Story</em></h2>
+      <p class="section-subtitle">Founded in 1998 in the heart of Surat, Shree Annapurna Catering has grown from a small family kitchen to one of Gujarat's most celebrated catering services — built on the pillars of taste, trust, and tradition.</p>
+      <div class="about-feats">
+        <div class="about-feat"><div class="about-feat-icon">🌿</div><div><h4>100% Pure Vegetarian</h4><p>We serve only sattvic, pure vegetarian food prepared with fresh ingredients daily.</p></div></div>
+        <div class="about-feat"><div class="about-feat-icon">👨‍🍳</div><div><h4>Expert Chefs</h4><p>Our team of 15+ skilled chefs bring regional expertise and passion to every dish.</p></div></div>
+        <div class="about-feat"><div class="about-feat-icon">🚚</div><div><h4>On-Time Delivery</h4><p>We pride ourselves on punctuality — your event, your schedule, no compromises.</p></div></div>
+        <div class="about-feat"><div class="about-feat-icon">🏆</div><div><h4>Award-Winning Service</h4><p>Recognized as Surat's Best Caterer 2022 & 2023 by Gujarat Food Excellence Awards.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section style="background: var(--cream);" class="reveal">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-tag">What We Offer</div>
+      <h2 class="section-title">Catering for Every <em>Occasion</em></h2>
+      <p class="section-subtitle">From grand weddings to cozy family gatherings — our versatile catering solutions are crafted to match your vision perfectly.</p>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-icon">💍</div><h3>Wedding Events</h3><p>Make your most important day truly magical with our full-scale wedding catering — from engagement to reception and everything in between.</p><span class="service-tag">Most Popular</span></div>
+        <div class="service-card"><div class="service-icon">🏢</div><h3>Corporate Events</h3><p>Elevate your business gatherings, board meetings, team lunches and product launches with our professional corporate catering.</p><span class="service-tag">Professional</span></div>
+        <div class="service-card"><div class="service-icon">🎂</div><h3>Birthday Parties</h3><p>Celebrate milestones with vibrant, delicious spreads that keep guests coming back for more. We handle everything.</p><span class="service-tag">Fun & Festive</span></div>
+        <div class="service-card"><div class="service-icon">🛕</div><h3>Pooja & Rituals</h3><p>Authentic sattvic prasad and traditional meals for all religious ceremonies — prepared with devotion and purity.</p><span class="service-tag">Traditional</span></div>
+        <div class="service-card"><div class="service-icon">🎊</div><h3>Festival Meals</h3><p>Special seasonal menus for Navratri, Diwali, Holi, Uttarayan and other festivals — keeping traditions alive on your plate.</p><span class="service-tag">Seasonal</span></div>
+        <div class="service-card"><div class="service-icon">🏠</div><h3>Tiffin Service</h3><p>Daily home-style tiffin delivery to your office or home — fresh, healthy, and cooked with a mother's care.</p><span class="service-tag">Daily Service</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <div class="process-wrap reveal">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">Simple, Seamless <em>Booking</em></h2>
+    <p class="section-subtitle">Getting your dream catering service starts with just a call — the rest, we handle.</p>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">01</div><div class="step-icon">📞</div><h4>Get in Touch</h4><p>Call or fill our booking form with your event details and requirements.</p></div>
+      <div class="process-step"><div class="step-num">02</div><div class="step-icon">🍽</div><h4>Menu Planning</h4><p>We customize a perfect menu based on your preferences, guest count & budget.</p></div>
+      <div class="process-step"><div class="step-num">03</div><div class="step-icon">✅</div><h4>Confirmation</h4><p>Finalize the plan, lock the date, and relax — everything is in capable hands.</p></div>
+      <div class="process-step"><div class="step-num">04</div><div class="step-icon">🎉</div><h4>Enjoy Your Event</h4><p>We set up, serve, and ensure a flawless experience while you celebrate.</p></div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section reveal">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-tag">Reviews</div>
+      <h2 class="section-title">What Our Clients <em>Say</em></h2>
+      <p class="section-subtitle">Thousands of happy families and organizations trust us for their most special moments.</p>
+      <div class="testi-grid">
+        <div class="testi-card"><div class="testi-stars">⭐⭐⭐⭐⭐</div><p class="testi-text">"Absolutely outstanding service for our daughter's wedding. The food was heavenly and all 800 guests couldn't stop praising every dish. Highly recommend Shree Annapurna!"</p><div class="testi-author"><div class="testi-avatar">RK</div><div><div class="testi-name">Rajesh Kothari</div><div class="testi-role">Wedding, Surat — 2024</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">⭐⭐⭐⭐⭐</div><p class="testi-text">"We use Shree Annapurna for all our corporate events. The team is incredibly professional, always on time, and the food quality is consistently excellent."</p><div class="testi-author"><div class="testi-avatar">PM</div><div><div class="testi-name">Priya Mehta</div><div class="testi-role">HR Manager, TCS Surat</div></div></div></div>
+        <div class="testi-card"><div class="testi-stars">⭐⭐⭐⭐⭐</div><p class="testi-text">"Their Navratri special thali is something else! We've been ordering every year for our society events and the consistency in taste and freshness is remarkable."</p><div class="testi-author"><div class="testi-avatar">SP</div><div><div class="testi-name">Sunita Patel</div><div class="testi-role">Society Event, Adajan</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <h2>Ready to Make Your Event Unforgettable?</h2>
+    <p>Contact us today for a free consultation and personalized menu planning session.</p>
+    <button class="btn" onclick="showPage('contact')">📞 Get Free Consultation</button>
+  </div>
+
+</div><!-- end home -->
+
+
+<!-- ═══════════════════════════════ MENU PAGE ════════════════════════════════ -->
+<div id="page-menu" class="page">
+  <div class="menu-hero">
+    <div class="section-tag">Our Culinary Creations</div>
+    <h1>Explore Our Menu</h1>
+    <p>Authentic flavors, fresh ingredients, and recipes passed down through generations.</p>
+  </div>
+
+  <div class="menu-filters">
+    <button class="filter-btn active" onclick="filterMenu(this, 'all')">All Items</button>
+    <button class="filter-btn" onclick="filterMenu(this, 'starters')">Starters</button>
+    <button class="filter-btn" onclick="filterMenu(this, 'mains')">Main Course</button>
+    <button class="filter-btn" onclick="filterMenu(this, 'breads')">Breads</button>
+    <button class="filter-btn" onclick="filterMenu(this, 'rice')">Rice & Biryani</button>
+    <button class="filter-btn" onclick="filterMenu(this, 'sweets')">Sweets & Desserts</button>
+    <button class="filter-btn" onclick="filterMenu(this, 'beverages')">Beverages</button>
+  </div>
+
+  <div class="menu-section">
+    <!-- STARTERS -->
+    <div class="menu-category" data-cat="starters">
+      <div class="menu-cat-title">🥗 Starters & Snacks</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-icon">🥟</div><div><h4>Paneer Tikka</h4><p>Marinated cottage cheese cubes grilled to perfection with spices.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-spicy">Spicy</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍢</div><div><h4>Hara Bhara Kebab</h4><p>Crispy patties made with spinach, peas, and aromatic spices.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🧅</div><div><h4>Samosa Chaat</h4><p>Crispy samosas topped with tangy chutneys, yogurt and sev.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🥜</div><div><h4>Dahi Puri</h4><p>Hollow puris filled with spiced yogurt and date-tamarind chutney.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍟</div><div><h4>Corn Chaat</h4><p>Sweet corn with herbs, lemon, and chaat masala — a crowd favourite.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🧆</div><div><h4>Kachori</h4><p>Crispy deep-fried pastry stuffed with spiced moong dal filling.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-spicy">Spicy</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- MAINS -->
+    <div class="menu-category" data-cat="mains">
+      <div class="menu-cat-title">🍛 Main Course</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-icon">🫕</div><div><h4>Paneer Butter Masala</h4><p>Rich, creamy tomato-based curry with soft paneer cubes.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🥘</div><div><h4>Dal Makhani</h4><p>Slow-cooked black lentils in buttery tomato gravy — a classic.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🌿</div><div><h4>Palak Paneer</h4><p>Fresh cottage cheese in smooth, spiced spinach gravy.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🫛</div><div><h4>Chana Masala</h4><p>Bold, tangy chickpea curry cooked in aromatic whole spices.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-spicy">Spicy</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🥗</div><div><h4>Mixed Vegetable Curry</h4><p>Seasonal vegetables in a rich onion-tomato masala gravy.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍆</div><div><h4>Baingan Bharta</h4><p>Roasted aubergine mashed with tomatoes, onions and spices.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- BREADS -->
+    <div class="menu-category" data-cat="breads">
+      <div class="menu-cat-title">🫓 Breads & Rotis</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-icon">🫓</div><div><h4>Butter Naan</h4><p>Soft, fluffy leavened bread brushed with butter from tandoor.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🌾</div><div><h4>Phulka Roti</h4><p>Light, wholesome whole-wheat rotis made fresh on tawa.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🫔</div><div><h4>Stuffed Paratha</h4><p>Whole wheat bread stuffed with spiced aloo, paneer, or gobi.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🥐</div><div><h4>Garlic Naan</h4><p>Tandoori naan with garlic butter and fresh coriander topping.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍞</div><div><h4>Puri</h4><p>Deep-fried whole wheat rounds, perfect with curries and halwa.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🫙</div><div><h4>Missi Roti</h4><p>Flavoured gram flour flatbread with onion, chilli and ajwain.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-spicy">Spicy</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- RICE -->
+    <div class="menu-category" data-cat="rice">
+      <div class="menu-cat-title">🍚 Rice & Biryani</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-icon">🍛</div><div><h4>Veg Biryani</h4><p>Fragrant long-grain basmati with vegetables and dum spices.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍙</div><div><h4>Jeera Rice</h4><p>Simple, fragrant basmati rice tempered with cumin and ghee.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🥗</div><div><h4>Pulao</h4><p>Vegetable or peas pulao with aromatic whole spices and nuts.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍚</div><div><h4>Curd Rice</h4><p>Cooling South Indian style curd rice with curry leaves tempering.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- SWEETS -->
+    <div class="menu-category" data-cat="sweets">
+      <div class="menu-cat-title">🍮 Sweets & Desserts</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-icon">🍮</div><div><h4>Gulab Jamun</h4><p>Soft milk-solid dumplings soaked in rose-cardamom sugar syrup.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍯</div><div><h4>Gajar Halwa</h4><p>Slow-cooked carrot pudding with khoya, sugar and dry fruits.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍨</div><div><h4>Mango Kulfi</h4><p>Traditional Indian ice cream with real Alphonso mango pulp.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🫙</div><div><h4>Rabdi</h4><p>Slow-reduced sweetened milk dessert with saffron and pistachios.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🧁</div><div><h4>Mohanthal</h4><p>Traditional Gujarati gram flour fudge with ghee and cardamom.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🍰</div><div><h4>Shrikhand</h4><p>Strained yogurt dessert flavoured with saffron and rose water.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- BEVERAGES -->
+    <div class="menu-category" data-cat="beverages">
+      <div class="menu-cat-title">🥤 Beverages</div>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-icon">🥛</div><div><h4>Masala Chaas</h4><p>Chilled buttermilk with cumin, mint and a pinch of asafoetida.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🥭</div><div><h4>Aam Panna</h4><p>Refreshing raw mango drink with cumin and black salt.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">🌹</div><div><h4>Rose Sharbat</h4><p>Fragrant rose syrup drink — a classic wedding refreshment.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span></div></div></div>
+        <div class="menu-item"><div class="menu-item-icon">☕</div><div><h4>Masala Chai</h4><p>Authentic spiced tea brewed with ginger, cardamom and milk.</p><div class="menu-item-badges"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span></div></div></div>
+      </div>
+    </div>
+
+    <!-- PACKAGES -->
+    <div style="padding-top: 40px;">
+      <div class="section-tag">Packages</div>
+      <h2 class="section-title">Choose Your <em>Package</em></h2>
+      <p class="section-subtitle">Flexible, transparent pricing designed for every occasion and budget.</p>
+      <div class="package-cards">
+        <div class="pkg-card">
+          <div class="pkg-name">🌿 Basic</div>
+          <div class="pkg-price">₹350</div>
+          <div class="pkg-price-note">per person (min. 50 guests)</div>
+          <ul class="pkg-features">
+            <li>2 Sabji + Dal + Rice</li>
+            <li>2 Roti varieties</li>
+            <li>Salad & Papad</li>
+            <li>1 Sweet dish</li>
+            <li>Chaas / Water</li>
+          </ul>
+          <button class="btn btn-outline" style="width:100%" onclick="showPage('contact')">Get Quote</button>
+        </div>
+        <div class="pkg-card featured">
+          <div class="pkg-featured-badge">✨ Most Popular</div>
+          <div class="pkg-name">🍽 Standard</div>
+          <div class="pkg-price">₹650</div>
+          <div class="pkg-price-note">per person (min. 100 guests)</div>
+          <ul class="pkg-features">
+            <li>Live counters (2)</li>
+            <li>4 Sabji + 2 Dal varieties</li>
+            <li>Biryani + 3 Roti types</li>
+            <li>Starter platter</li>
+            <li>3 Sweet dishes</li>
+            <li>Welcome drink</li>
+          </ul>
+          <button class="btn btn-primary" style="width:100%" onclick="showPage('contact')">Book Now</button>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">👑 Premium</div>
+          <div class="pkg-price">₹1,100</div>
+          <div class="pkg-price-note">per person (min. 200 guests)</div>
+          <ul class="pkg-features">
+            <li>Live counters (5+)</li>
+            <li>Full thali experience</li>
+            <li>Chef stationed service</li>
+            <li>Mocktail bar</li>
+            <li>Chaat & Snack stations</li>
+            <li>Dessert live counter</li>
+            <li>Décor & setup included</li>
+          </ul>
+          <button class="btn btn-outline" style="width:100%" onclick="showPage('contact')">Get Quote</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end menu -->
+
+
+<!-- ═══════════════════════════════ GALLERY PAGE ═══════════════════════════════ -->
+<div id="page-gallery" class="page">
+  <div class="gallery-hero">
+    <div class="section-tag">Our Work</div>
+    <h1>Events & Memories</h1>
+    <p style="color:var(--muted);font-size:16px;max-width:500px;margin:0 auto;">A glimpse into the thousands of celebrations we've been honoured to be part of.</p>
+  </div>
+
+  <div class="gallery-tabs">
+    <button class="gallery-tab active" onclick="switchGalleryTab(this,'photos')">📸 Photos</button>
+    <button class="gallery-tab" onclick="switchGalleryTab(this,'videos')">🎬 Videos</button>
+    <button class="gallery-tab" onclick="switchGalleryTab(this,'past')">🏆 Past Events</button>
+  </div>
+
+  <div class="gallery-content">
+    <!-- PHOTOS TAB -->
+    <div id="tab-photos">
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" onclick="openLightbox('🍛','Wedding Buffet Spread')"><div class="gallery-emoji">🍛</div><div class="overlay"><span class="overlay-text">Wedding Buffet Spread</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🧑‍🍳','Chef at Work')"><div class="gallery-emoji">🧑‍🍳</div><div class="overlay"><span class="overlay-text">Chef at Work</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('💍','Ring Ceremony Setup')"><div class="gallery-emoji">💍</div><div class="overlay"><span class="overlay-text">Ring Ceremony Setup</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🍮','Dessert Station')"><div class="gallery-emoji">🍮</div><div class="overlay"><span class="overlay-text">Dessert Station</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🍽','Table Setting')"><div class="gallery-emoji">🍽</div><div class="overlay"><span class="overlay-text">Elegant Table Setting</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🌺','Floral Theme Event')"><div class="gallery-emoji">🌺</div><div class="overlay"><span class="overlay-text">Floral Theme Event</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🥗','Starter Platter')"><div class="gallery-emoji">🥗</div><div class="overlay"><span class="overlay-text">Starter Platter</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🎂','Birthday Celebration')"><div class="gallery-emoji">🎂</div><div class="overlay"><span class="overlay-text">Birthday Celebration</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🛕','Pooja Prasad Setup')"><div class="gallery-emoji">🛕</div><div class="overlay"><span class="overlay-text">Pooja Prasad Setup</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🎊','Corporate Gala Dinner')"><div class="gallery-emoji">🎊</div><div class="overlay"><span class="overlay-text">Corporate Gala Dinner</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🍯','Sweet Counter')"><div class="gallery-emoji">🍯</div><div class="overlay"><span class="overlay-text">Traditional Sweet Counter</span></div></div>
+        <div class="gallery-item" onclick="openLightbox('🌙','Navratri Special')"><div class="gallery-emoji">🌙</div><div class="overlay"><span class="overlay-text">Navratri Fasting Menu</span></div></div>
+      </div>
+    </div>
+
+    <!-- VIDEOS TAB -->
+    <div id="tab-videos" style="display:none">
+      <div class="video-grid">
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-emoji">💍</div><div class="play-btn">▶</div><span class="video-duration">4:32</span></div><div class="video-info"><h4>Grand Wedding Catering — Kothari Family</h4><p>500+ guests · Surat, 2024</p></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-emoji">🍽</div><div class="play-btn">▶</div><span class="video-duration">2:18</span></div><div class="video-info"><h4>Live Counter Setup — Behind the Scenes</h4><p>How we set up for 1000 guests</p></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-emoji">🧑‍🍳</div><div class="play-btn">▶</div><span class="video-duration">6:45</span></div><div class="video-info"><h4>Chef's Special: Making Paneer Butter Masala</h4><p>Signature recipe walkthrough</p></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-emoji">🎊</div><div class="play-btn">▶</div><span class="video-duration">3:12</span></div><div class="video-info"><h4>Navratri Fasting Feast — 2023</h4><p>Saraswati Society, Adajan</p></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-emoji">🏢</div><div class="play-btn">▶</div><span class="video-duration">1:55</span></div><div class="video-info"><h4>Corporate Annual Day — Surat Tech Park</h4><p>250 guests · Buffet setup</p></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-emoji">🍮</div><div class="play-btn">▶</div><span class="video-duration">3:40</span></div><div class="video-info"><h4>Sweet Stall: Diwali Special Mithai Counter</h4><p>25 varieties of traditional sweets</p></div></div>
+      </div>
+    </div>
+
+    <!-- PAST EVENTS TAB -->
+    <div id="tab-past" style="display:none">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px;">
+        <div style="background:white;border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s" onmouseenter="this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.boxShadow='none'">
+          <div style="font-size:48px;line-height:1">💍</div>
+          <div>
+            <div style="font-size:12px;background:var(--saffron-pale);color:var(--saffron);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:8px">Wedding</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:19px;color:var(--dark);margin-bottom:6px">Kothari–Mehta Wedding</h3>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7">A breathtaking 800-guest wedding at Surat's Crystal Hall. Full buffet with 8 live counters, mocktail bar, and 40-item sweet stall. Featured in Gujarat Food Magazine.</p>
+            <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)"><span>👥 800 guests</span><span>📅 Feb 2024</span><span>⭐ 5.0</span></div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s" onmouseenter="this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.boxShadow='none'">
+          <div style="font-size:48px;line-height:1">🏢</div>
+          <div>
+            <div style="font-size:12px;background:#EEF4FF;color:#1E40AF;padding:3px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:8px">Corporate</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:19px;color:var(--dark);margin-bottom:6px">TCS Annual Day 2023</h3>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7">Catering for 1,200 employees at Surat Tech Park. Multi-cuisine buffet with regional specialities from 5 states of India. Zero food wastage achieved.</p>
+            <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)"><span>👥 1,200 guests</span><span>📅 Dec 2023</span><span>⭐ 4.9</span></div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s" onmouseenter="this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.boxShadow='none'">
+          <div style="font-size:48px;line-height:1">🛕</div>
+          <div>
+            <div style="font-size:12px;background:#FEF3EA;color:var(--saffron);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:8px">Festival</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:19px;color:var(--dark);margin-bottom:6px">Navratri Mahotsav — Saraswati Society</h3>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7">9 consecutive nights of fasting-friendly Navratri thalis for 500+ society members. Completely sattvic menu with no onion-garlic preparations.</p>
+            <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)"><span>👥 500/night</span><span>📅 Oct 2023</span><span>⭐ 5.0</span></div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:var(--radius-lg);border:1px solid var(--border);padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s" onmouseenter="this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.boxShadow='none'">
+          <div style="font-size:48px;line-height:1">🎂</div>
+          <div>
+            <div style="font-size:12px;background:#EAF7EE;color:#1A7A38;padding:3px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:8px">Birthday</div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:19px;color:var(--dark);margin-bottom:6px">Golden Jubilee — Sheth Family</h3>
+            <p style="font-size:13px;color:var(--muted);line-height:1.7">Spectacular 50th birthday celebration for 300 guests. Custom thematic menu inspired by the guest of honour's favourite recipes across 5 decades.</p>
+            <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)"><span>👥 300 guests</span><span>📅 Aug 2023</span><span>⭐ 5.0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end gallery -->
+
+
+<!-- ═══════════════════════════════ CONTACT PAGE ═══════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-hero">
+    <div class="section-tag">Get in Touch</div>
+    <h1>Let's Plan Together</h1>
+    <p style="color:rgba(255,255,255,0.6)">Share your vision with us — we'll create the perfect culinary experience for you.</p>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>We'd Love to Hear From You</h3>
+      <p>Whether you're planning a wedding for 1,000 or a birthday dinner for 50, our team is ready to craft the perfect experience. Reach out through any channel below.</p>
+      <div class="contact-items">
+        <div class="contact-item"><div class="contact-item-icon">📞</div><div><h4>Phone & WhatsApp</h4><p><a href="tel:+919876543210">+91 98765 43210</a><br><a href="tel:+919876543211">+91 98765 43211</a></p></div></div>
+        <div class="contact-item"><div class="contact-item-icon">✉️</div><div><h4>Email</h4><p><a href="mailto:info@shreeannapurna.in">info@shreeannapurna.in</a><br><a href="mailto:book@shreeannapurna.in">book@shreeannapurna.in</a></p></div></div>
+        <div class="contact-item"><div class="contact-item-icon">📍</div><div><h4>Office Address</h4><p>23, Annapurna Complex, Near Lal Darwaja,<br>Surat — 395003, Gujarat, India</p></div></div>
+        <div class="contact-item"><div class="contact-item-icon">🕐</div><div><h4>Working Hours</h4><p>Monday – Saturday: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 4:00 PM</p></div></div>
+      </div>
+      <div class="social-links">
+        <a class="social-link" title="Facebook">📘</a>
+        <a class="social-link" title="Instagram">📸</a>
+        <a class="social-link" title="WhatsApp">💬</a>
+        <a class="social-link" title="YouTube">▶️</a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div id="formContent">
+        <h3>Book a Free Consultation</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name *</label><input type="text" placeholder="Ramesh Patel" id="fname"></div>
+          <div class="form-group"><label>Phone Number *</label><input type="tel" placeholder="+91 98765 43210" id="fphone"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="ramesh@email.com" id="femail"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Event Type *</label>
+            <select id="ftype">
+              <option value="">Select event...</option>
+              <option>Wedding</option>
+              <option>Corporate Event</option>
+              <option>Birthday Party</option>
+              <option>Pooja / Ritual</option>
+              <option>Festival Event</option>
+              <option>Anniversary</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Expected Guests *</label>
+            <select id="fguests">
+              <option value="">Select range...</option>
+              <option>Below 50</option>
+              <option>50 – 100</option>
+              <option>100 – 300</option>
+              <option>300 – 500</option>
+              <option>500 – 1000</option>
+              <option>1000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Event Date</label><input type="date" id="fdate"></div>
+          <div class="form-group"><label>Budget (per person)</label>
+            <select id="fbudget">
+              <option value="">Select budget...</option>
+              <option>₹300 – ₹500</option>
+              <option>₹500 – ₹800</option>
+              <option>₹800 – ₹1200</option>
+              <option>₹1200+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Message / Special Requirements</label><textarea placeholder="Tell us about your event, dietary preferences, or any special requests..." id="fmessage"></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:16px" onclick="submitForm()">📅 Send Booking Request</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✅</div>
+        <h4>Request Received!</h4>
+        <p>Thank you! Our team will contact you within 2 hours to discuss your event details and prepare a custom quote.</p>
+        <button class="btn btn-primary" style="margin-top:24px" onclick="resetForm()">Submit Another Request</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <div class="map-wrap">
+      <div class="map-placeholder">
+        <div class="icon">📍</div>
+        <h4>Shree Annapurna Catering</h4>
+        <p>23, Annapurna Complex, Near Lal Darwaja, Surat — 395003</p>
+        <button class="btn btn-primary" style="margin-top:16px" onclick="window.open('https://maps.google.com/?q=Surat+Gujarat')">Open in Google Maps</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div style="text-align:center;max-width:600px;margin:0 auto;">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the minimum order size? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Our minimum order is for 50 guests for buffet service, and 30 guests for thali/plate service. For smaller gatherings, please call us to discuss options.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How far in advance should I book? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">For weddings, we recommend booking 3–6 months in advance. For other events, 2–4 weeks notice is ideal, though we do accommodate last-minute requests when possible.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer tasting sessions? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes! We offer complimentary tasting sessions for bookings of 200+ guests. For smaller events, a nominal tasting fee of ₹500 per person applies.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is your food completely vegetarian? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes, we serve 100% pure vegetarian food only. We also accommodate Jain menus (no root vegetables, no onion/garlic) and fasting-friendly menus upon request.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you provide crockery and serving staff? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes, all our packages include cutlery, serving dishes, chafing dishes, and trained serving staff. Premium packages also include décor and event setup.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is your cancellation policy? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Cancellations made 15+ days before the event receive a full refund. 7–14 days: 50% refund. Less than 7 days: no refund on the advance amount paid.</div></div></div>
+    </div>
+  </div>
+</div><!-- end contact -->
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo footer-logo-text" onclick="showPage('home')" style="cursor:pointer">
+        <div class="nav-logo-icon">🍽</div>
+        <div class="nav-logo-text">
+          <span>Shree Annapurna</span>
+          <span>Catering Services</span>
+        </div>
+      </a>
+      <p>Serving authentic vegetarian food with love, passion, and a quarter-century of culinary expertise across Surat and South Gujarat.</p>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('menu')">Menu</a></li><li><a onclick="showPage('gallery')">Gallery</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a>Wedding Catering</a></li><li><a>Corporate Events</a></li><li><a>Pooja & Rituals</a></li><li><a>Tiffin Service</a></li><li><a>Festival Meals</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a>+91 98765 43210</a></li><li><a>info@shreeannapurna.in</a></li><li><a>Lal Darwaja, Surat</a></li><li><a>Mon–Sat: 9AM – 8PM</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Shree Annapurna Catering. All rights reserved.</p>
+    <p>Made with <span>❤</span> in Surat, Gujarat</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner" id="lightboxContent">
+    <div id="lightboxEmoji"></div>
+    <p id="lightboxCaption" style="font-size:18px;margin-top:20px;font-family:'Playfair Display',serif;color:rgba(255,255,255,0.8)"></p>
+  </div>
+</div>
+
+<script>
+  // ── PAGE NAVIGATION
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const el = document.getElementById('nav-' + name);
+    if (el) el.classList.add('active');
+    window.scrollTo(0,0);
+    setTimeout(triggerReveal, 100);
+  }
+
+  // ── MOBILE NAV
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  // ── SCROLL EFFECTS
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
+    triggerReveal();
+  });
+
+  function triggerReveal() {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight - 80) el.classList.add('visible');
+    });
+  }
+  setTimeout(triggerReveal, 200);
+
+  // ── MENU FILTER
+  function filterMenu(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-category').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  // ── GALLERY TABS
+  function switchGalleryTab(tab, id) {
+    document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    ['photos','videos','past'].forEach(t => {
+      document.getElementById('tab-' + t).style.display = t === id ? '' : 'none';
+    });
+  }
+
+  // ── LIGHTBOX
+  function openLightbox(emoji, caption) {
+    document.getElementById('lightboxEmoji').textContent = emoji;
+    document.getElementById('lightboxCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  // ── FAQ ACCORDION
+  function toggleFaq(el) {
+    const ans = el.nextElementSibling;
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      el.classList.add('open');
+      ans.classList.add('open');
+    }
+  }
+
+  // ── CONTACT FORM
+  function submitForm() {
+    const name = document.getElementById('fname').value;
+    const phone = document.getElementById('fphone').value;
+    const type = document.getElementById('ftype').value;
+    if (!name || !phone || !type) {
+      alert('Please fill in Name, Phone, and Event Type to continue.');
+      return;
+    }
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+  function resetForm() {
+    document.getElementById('formContent').style.display = 'block';
+    document.getElementById('formSuccess').style.display = 'none';
+    ['fname','fphone','femail','fmessage'].forEach(id => document.getElementById(id).value = '');
+    ['ftype','fguests','fbudget'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('fdate').value = '';
+  }
+</script>
+</body>
+</html>

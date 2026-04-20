@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Catering Services | Contact Us</title>
+    <meta name="description" content="Get in touch with Krishna Catering for your next big event.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-transition">
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Krishna Catering</span>
+            </a>
+            <nav class="navbar" id="navbar">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="contact.html" class="btn btn-primary">Book Now</a>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header" style="height: 40vh; min-height: 350px;">
+            <div class="page-header-bg">
+                <img src="assets/hero_banner.png" alt="Contact Header" style="object-position: center 30%;">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="page-header-content">
+                <h1>Contact Us</h1>
+                <p>Let's plan your next memorable event together.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="section-title">
+                            <span class="subtitle">Get In Touch</span>
+                            <h2>We'd Love to Hear From You</h2>
+                        </div>
+                        <p>Have an upcoming event? Leave your details below and our team will get back to you with a customized catering proposal catered to your unique needs.</p>
+                        
+                        <div class="contact-details">
+                            <div class="info-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Corporate Office</h4>
+                                    <p>123 Culinary Hub, Business District,<br>City 400001, India</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Phone Numbers</h4>
+                                    <p>+91 98765 43210 <br> +91 90000 11111</p>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="info-text">
+                                    <h4>Email Address</h4>
+                                    <p>hello@krishnacatering.in <br> info@krishnacatering.in</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="bookingForm">
+                            <h3>Send an Inquiry</h3>
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Your Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" placeholder="Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Email Address">
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <input type="date" id="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" id="guests" placeholder="Est. Guest Count" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select id="eventType" required>
+                                    <option value="" disabled selected>Select Event Type</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="party">Private Party</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" rows="4" placeholder="Briefly describe your requirements or preferences..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit-btn">Submit Request <i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section" style="margin-top: 6rem; padding-top: 4rem; border-top: 1px solid #eee;">
+                    <div style="text-align:center;max-width:600px;margin:0 auto;margin-bottom:3rem;">
+                        <span class="subtitle">FAQ</span>
+                        <h2>Frequently Asked <em>Questions</em></h2>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the minimum order size? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Our minimum order is for 50 guests for buffet service, and 30 guests for thali/plate service. For smaller gatherings, please call us to discuss options.</div></div></div>
+                        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How far in advance should I book? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">For weddings, we recommend booking 3–6 months in advance. For other events, 2–4 weeks notice is ideal.</div></div></div>
+                        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you offer tasting sessions? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes! We offer complimentary tasting sessions for bookings of 200+ guests.</div></div></div>
+                        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is your food completely vegetarian? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes, we serve 100% pure vegetarian food only. We also accommodate Jain menus and fasting-friendly menus upon request.</div></div></div>
+                        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do you provide crockery and serving staff? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes, all our packages include cutlery, serving dishes, chafing dishes, and trained serving staff.</div></div></div>
+                        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is your cancellation policy? <span class="faq-chevron">▼</span></div><div class="faq-a"><div class="faq-a-inner">Cancellations made 15+ days before the event receive a full refund. Less than 7 days: no refund on the advance amount paid.</div></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Krishna Catering</span>
+                    </a>
+                    <p>Delivering premium culinary experiences with impeccable service since 2008. Your trusted catering partner.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="contact.html">Wedding Catering</a></li>
+                        <li><a href="contact.html">Corporate Events</a></li>
+                        <li><a href="contact.html">Private Parties</a></li>
+                        <li><a href="#">Live Counters</a></li>
+                        <li><a href="#">Menu Tasting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Krishna Catering Services. All Rights Reserved.</p>
+                <p>Designed with love for memorable events.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

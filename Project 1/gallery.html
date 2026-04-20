@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Catering Services | Gallery</title>
+    <meta name="description" content="View our past catering events, elegant setups, and delicious food presentations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="page-transition">
+    <!-- Navbar -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Krishna Catering</span>
+            </a>
+            <nav class="navbar" id="navbar">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="contact.html" class="btn btn-primary">Book Now</a>
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-bg">
+                <img src="assets/gallery_wedding.png" alt="Gallery Header">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="page-header-content">
+                <h1>Memories We've Catered</h1>
+                <p>A glimpse into the stunning events we've executed.</p>
+            </div>
+        </section>
+
+        <!-- Gallery / Past Orders Section -->
+        <section class="gallery section" id="gallery">
+            <div class="container">
+                <div class="section-title center">
+                    <span class="subtitle">Our Work</span>
+                    <h2>Past Orders & Events</h2>
+                    <p>Browse through our photos and videos from recent weddings, corporate gatherings, and private parties.</p>
+                </div>
+
+                <div class="gallery-tabs">
+                    <button class="gallery-tab active" onclick="switchGalleryTab(this,'photos')">📸 Photos</button>
+                    <button class="gallery-tab" onclick="switchGalleryTab(this,'videos')">🎬 Videos</button>
+                    <button class="gallery-tab" onclick="switchGalleryTab(this,'past')">🏆 Past Events</button>
+                </div>
+
+                <div class="gallery-content">
+                    <!-- PHOTOS TAB -->
+                    <div id="tab-photos">
+                        <div class="gallery-grid">
+                            <div class="gallery-item large" onclick="openLightbox('🍛','Wedding Buffet Spread')"><img src="assets/gallery_wedding.png" alt="Wedding Buffet Spread"><div class="gallery-overlay"><i class="fa-solid fa-camera"></i><span>Wedding Buffet Spread</span></div></div>
+                            <div class="gallery-item" onclick="openLightbox('🧑‍🍳','Chef at Work')"><div class="placeholder-img" style="background-color: var(--saffron-pale); height: 100%;"><i class="fa-solid fa-fire fa-3x" style="color: var(--primary-color);"></i></div><div class="gallery-overlay"><i class="fa-solid fa-camera"></i><span>Chef at Work</span></div></div>
+                            <div class="gallery-item" onclick="openLightbox('💍','Ring Ceremony Setup')"><div class="placeholder-img" style="background-color: #118ab2; height: 100%;"><i class="fa-solid fa-ring fa-3x" style="color: #fff;"></i></div><div class="gallery-overlay"><i class="fa-solid fa-camera"></i><span>Ring Ceremony Setup</span></div></div>
+                            <div class="gallery-item" onclick="openLightbox('🍮','Dessert Station')"><div class="placeholder-img" style="background-color: #06d6a0; height: 100%;"><i class="fa-solid fa-ice-cream fa-3x" style="color: #fff;"></i></div><div class="gallery-overlay"><i class="fa-solid fa-camera"></i><span>Dessert Station</span></div></div>
+                            <div class="gallery-item large" onclick="openLightbox('🍽','Table Setting')"><img src="assets/menu_paneer.png" alt="Table Setting"><div class="gallery-overlay"><i class="fa-solid fa-camera"></i><span>Elegant Table Setting</span></div></div>
+                            <div class="gallery-item" onclick="openLightbox('🥗','Starter Platter')"><img src="assets/menu_samosa.png" alt="Starter Platter"><div class="gallery-overlay"><i class="fa-solid fa-camera"></i><span>Starter Platter</span></div></div>
+                        </div>
+                    </div>
+
+                    <!-- VIDEOS TAB -->
+                    <div id="tab-videos" style="display:none">
+                        <div class="video-grid">
+                            <div class="video-card"><div class="video-thumb" style="background-image:url('assets/hero_banner.png');background-size:cover;background-position:center"><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration" style="z-index: 2;">4:32</span><div class="hero-overlay"></div></div><div class="video-info"><h4>Grand Wedding Catering — Kothari Family</h4><p>500+ guests · Surat, 2024</p></div></div>
+                            <div class="video-card"><div class="video-thumb" style="background-color:#118ab2"><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration" style="z-index: 2;">2:18</span></div><div class="video-info"><h4>Live Counter Setup — Behind the Scenes</h4><p>How we set up for 1000 guests</p></div></div>
+                            <div class="video-card"><div class="video-thumb" style="background-color:#06d6a0"><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration" style="z-index: 2;">6:45</span></div><div class="video-info"><h4>Chef's Special: Making Paneer Butter Masala</h4><p>Signature recipe walkthrough</p></div></div>
+                        </div>
+                    </div>
+
+                    <!-- PAST EVENTS TAB -->
+                    <div id="tab-past" style="display:none">
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;">
+                            <div style="background:white;border-radius:var(--radius-lg);border:1px solid #eee;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s" onmouseenter="this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.boxShadow='none'">
+                                <div style="font-size:48px;line-height:1">💍</div>
+                                <div>
+                                    <div style="font-size:12px;background:rgba(247, 127, 0, 0.1);color:var(--primary-color);padding:3px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:8px">Wedding</div>
+                                    <h3 style="font-family:var(--font-heading);font-size:19px;color:var(--text-main);margin-bottom:6px">Kothari–Mehta Wedding</h3>
+                                    <p style="font-size:13px;color:var(--text-muted);line-height:1.7">A breathtaking 800-guest wedding at Surat's Crystal Hall. Full buffet with 8 live counters, mocktail bar, and 40-item sweet stall.</p>
+                                    <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--text-muted)"><span>👥 800 guests</span><span>📅 Feb 2024</span><span>⭐ 5.0</span></div>
+                                </div>
+                            </div>
+                            <div style="background:white;border-radius:var(--radius-lg);border:1px solid #eee;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all 0.2s" onmouseenter="this.style.boxShadow='var(--shadow-lg)'" onmouseleave="this.style.boxShadow='none'">
+                                <div style="font-size:48px;line-height:1">🏢</div>
+                                <div>
+                                    <div style="font-size:12px;background:#EEF4FF;color:#1E40AF;padding:3px 10px;border-radius:20px;display:inline-block;font-weight:600;margin-bottom:8px">Corporate</div>
+                                    <h3 style="font-family:var(--font-heading);font-size:19px;color:var(--text-main);margin-bottom:6px">TCS Annual Day 2023</h3>
+                                    <p style="font-size:13px;color:var(--text-muted);line-height:1.7">Catering for 1,200 employees at Surat Tech Park. Multi-cuisine buffet with regional specialities from 5 states of India.</p>
+                                    <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--text-muted)"><span>👥 1,200 guests</span><span>📅 Dec 2023</span><span>⭐ 4.9</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <div class="lightbox-inner" id="lightboxContent">
+            <div id="lightboxEmoji"></div>
+            <p id="lightboxCaption" style="font-size:18px;margin-top:20px;font-family:var(--font-heading);color:rgba(255,255,255,0.8)"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Krishna Catering</span>
+                    </a>
+                    <p>Delivering premium culinary experiences with impeccable service since 2008. Your trusted catering partner.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="contact.html">Wedding Catering</a></li>
+                        <li><a href="contact.html">Corporate Events</a></li>
+                        <li><a href="contact.html">Private Parties</a></li>
+                        <li><a href="#">Live Counters</a></li>
+                        <li><a href="#">Menu Tasting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Krishna Catering Services. All Rights Reserved.</p>
+                <p>Designed with love for memorable events.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
